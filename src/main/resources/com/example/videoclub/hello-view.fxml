@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.videoclub.controller.Controlador"
+      spacing="10" alignment="CENTER" styleClass="main-container">
+
+    <Label text="Videoclub - Gestión de Películas" styleClass="title"/>
+
+    <HBox spacing="10">
+        <VBox spacing="5">
+            <TextField fx:id="tituloField" promptText="Título"/>
+            <TextField fx:id="generoField" promptText="Género"/>
+            <Spinner fx:id="anioSpinner"/>
+        </VBox>
+        <VBox spacing="5">
+            <Button text="Agregar Película" onAction="#agregarPelicula"/>
+            <Button text="Eliminar Película" onAction="#eliminarPelicula"/>
+        </VBox>
+    </HBox>
+
+    <ListView fx:id="listaPeliculas" prefHeight="200"/>
+    <Label fx:id="resultadoLabel" styleClass="resultado"/>
+</VBox>
+
