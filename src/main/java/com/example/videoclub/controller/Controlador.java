@@ -49,17 +49,26 @@ public class Controlador {
 
     @FXML
     public void initialize() {
+        configurarPeriodoGroup();
+        configurarAnioSpinner();
+        configurarComboBoxes();
+        inicializarPeliculas();
+        configurarFiltros();
+    }
+
+    private void configurarPeriodoGroup() {
         ToggleGroup periodoGroup = new ToggleGroup();
         unDiaRadioButton.setToggleGroup(periodoGroup);
         tresDiasRadioButton.setToggleGroup(periodoGroup);
         sieteDiasRadioButton.setToggleGroup(periodoGroup);
+    }
 
+    private void configurarAnioSpinner() {
         // Configuración inicial del Spinner para los años
         anioSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1900, 2100, 2023));
+    }
 
-        // Asocia la lista observable al ListView
-        listaPeliculas.setItems(peliculasFiltradas);
-
+    private void configurarComboBoxes() {
         // Inicializamos el ComboBox con algunos géneros, incluyendo "Todos" al inicio
         ObservableList<String> generos = FXCollections.observableArrayList("Todos", "Acción", "Ciencia ficción", "Drama", "Comedia", "Terror");
         generoComboBox.setItems(generos);
@@ -68,7 +77,9 @@ public class Controlador {
         // Seleccionar la opción "Todos" por defecto
         generoComboBox.setValue("Todos");
         generoFiltroComboBox.setValue("Todos");
+    }
 
+    private void inicializarPeliculas() {
         // Inicializamos el ArrayList de películas con algunas películas de ejemplo
         peliculas.add(new Pelicula("Inception", "Ciencia ficción", 2010));
         peliculas.add(new Pelicula("The Dark Knight", "Acción", 2008));
@@ -78,7 +89,10 @@ public class Controlador {
 
         // Mostrar todas las películas en el ListView al inicio
         peliculasFiltradas.setAll(peliculas);
+        listaPeliculas.setItems(peliculasFiltradas);
+    }
 
+    private void configurarFiltros() {
         // Escucha cambios en los filtros y aplica la función filtrarPeliculas()
         tituloFiltroField.textProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
         generoFiltroComboBox.valueProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
