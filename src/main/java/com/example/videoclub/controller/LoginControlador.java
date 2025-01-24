@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class LoginControlador {
 
     @FXML
-    private Button iniciarSesionButton;  // Vinculación del botón con el fx:id en el FXML
+    private Button iniciarSesionButton;  // Botón para iniciar sesión
     @FXML
     private TextField usuarioField;      // Campo para el nombre de usuario
     @FXML
@@ -21,38 +21,30 @@ public class LoginControlador {
     @FXML
     private Label mensajeError;         // Etiqueta para mostrar errores
 
+    // Credenciales predefinidas para el administrador
+    private static final String ADMIN_USUARIO = "admin";
+    private static final String ADMIN_CONTRASENA = "1234";
+
     // Método que se invoca al hacer clic en el botón
     @FXML
     private void manejarInicioSesion() {
-        // Lógica de validación de usuario y contraseña
         String usuario = usuarioField.getText();
         String contrasena = contrasenaField.getText();
 
-        // Validamos si el usuario existe en el repositorio
-        Usuario usuarioAutenticado = Usuario.UsuarioRepository.validarUsuario(usuario, contrasena);
-
-        if (usuarioAutenticado != null) {
+        // Validación de credenciales
+        if (ADMIN_USUARIO.equals(usuario) && ADMIN_CONTRASENA.equals(contrasena)) {
             mensajeError.setVisible(false);  // Ocultamos el mensaje de error
-
-            if (usuarioAutenticado.esAdmin()) {
-                // Si es admin, cargamos la pantalla principal
-                cargarPantallaAdmin();
-            } else {
-                // Si es un user normal, redirigimos a una pantalla diferente
-                cargarPantallaUser();
-            }
+            cargarPantallaAdmin();
         } else {
             mensajeError.setText("Usuario o contraseña incorrectos");
             mensajeError.setVisible(true);  // Mostramos el mensaje de error
         }
     }
 
-
-
-    // Este método carga la pantalla principal después del login exitoso
+    // Método para cargar la pantalla principal del administrador
     private void cargarPantallaAdmin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constantes.PAGINA_ADMIN.getDescripcion()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constantes.GESTIONAR_PELICULAS.getDescripcion()));
             Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
@@ -62,31 +54,14 @@ public class LoginControlador {
             e.printStackTrace();
         }
     }
-    private void cargarPantallaUser() {
-        try {
-            // Cargamos el archivo FXML para la vista de usuario
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/videoclub/user-view.fxml"));
-            Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.setTitle("Vista de Usuario");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-
-
-    // Este método se ejecuta cuando el controlador se inicializa
+    // Método que se ejecuta cuando el controlador se inicializa
     @FXML
     public void initialize() {
         if (iniciarSesionButton != null) {
-            // Aquí puedes realizar cualquier inicialización extra si es necesario
             System.out.println("Botón 'Iniciar Sesión' inicializado correctamente");
         } else {
             System.out.println("El botón 'Iniciar Sesión' no se ha inicializado");
         }
     }
 }
-
