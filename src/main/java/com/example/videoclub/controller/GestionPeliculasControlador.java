@@ -96,6 +96,8 @@ public class GestionPeliculasControlador extends BaseControlador {
         cargarPantalla(Constantes.GESTIONAR_ALQUILERES.getDescripcion(), Constantes.TITULO_GESTIONAR_ALQUILERES.getDescripcion());
     }
 
+
+
     // Método genérico para cargar pantallas
     private void cargarPantalla(String rutaFXML, String titulo) {
         try {
