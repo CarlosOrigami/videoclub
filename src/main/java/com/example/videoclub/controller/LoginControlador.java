@@ -1,14 +1,15 @@
 package com.example.videoclub.controller;
 
 import com.example.videoclub.utils.Constantes;
+import com.example.videoclub.utils.PantallaUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginControlador {
 
@@ -19,7 +20,26 @@ public class LoginControlador {
     @FXML
     private PasswordField contrasenaField;  // Campo para la contraseña
     @FXML
-    private Label mensajeError;         // Etiqueta para mostrar errores
+    private Label mensajeError;
+    // Etiqueta para mostrar errores
+    private void cargarPantallaAdmin() {
+        try {
+            // Obtenemos el stage actual desde el botón de inicio de sesión
+            Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
+
+            // Usamos el método showEstaPantalla de PantallaUtils
+            PantallaUtils pantallaUtils = new PantallaUtils();
+            pantallaUtils.showEstaPantalla(
+                    stage,
+                    Constantes.ADMIN.getDescripcion(),  // Ruta definida en la constante
+                    Constantes.TITULO_ADMIN.getDescripcion(),  // Título definido en la constante
+                    800, 600  // Ancho y alto
+            );
+        } catch (IOException e) {
+            System.err.println("Error al cargar la pantalla de administración: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     // Credenciales predefinidas para el administrador
     private static final String ADMIN_USUARIO = "admin";
@@ -40,21 +60,6 @@ public class LoginControlador {
             mensajeError.setVisible(true);  // Mostramos el mensaje de error
         }
     }
-
-    // Método para cargar la pantalla principal del administrador
-    private void cargarPantallaAdmin() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constantes.GESTIONAR_PELICULAS.getDescripcion()));
-            Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.setTitle("Pantalla Principal");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     // Método que se ejecuta cuando el controlador se inicializa
     @FXML
     public void initialize() {

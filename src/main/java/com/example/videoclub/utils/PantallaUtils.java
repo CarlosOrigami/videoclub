@@ -18,6 +18,10 @@ public class PantallaUtils {
      */
     public FXMLLoader showEstaPantalla(Stage stage, String vista, String titulo, int ancho, int alto) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(vista));
+        if (fxmlLoader.getLocation() == null) {
+            throw new IOException("No se encontró el archivo FXML en la ruta: " + vista);
+        }
+
         Scene scene = new Scene(fxmlLoader.load(), ancho, alto);
         stage.setTitle(titulo);
         stage.setScene(scene);
