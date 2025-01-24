@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 
 public class Controlador {
     @FXML
@@ -14,6 +15,12 @@ public class Controlador {
     private ComboBox<String> generoFiltroComboBox;
     @FXML
     private Spinner<Integer> anioFiltroSpinner;
+    @FXML
+    private VBox seccionCrearPelicula;
+    @FXML
+    private VBox seccionFiltrarPeliculas;
+    @FXML
+    private VBox seccionAsignarAlquiler;
 
     @FXML
     private RadioButton unDiaRadioButton;
@@ -125,7 +132,7 @@ public class Controlador {
     }
 
     @FXML
-    private void eliminarPelicula() {
+    private void mostrarEliminarPelicula() {
         Pelicula seleccionada = listaPeliculas.getSelectionModel().getSelectedItem();
 
         // Comprueba si se seleccionó una película
@@ -205,5 +212,29 @@ public class Controlador {
         } else {
             resultadoLabel.setText("Error: Seleccione un período de alquiler.");
         }
+
+    }
+    @FXML
+    private void mostrarCrearPelicula() {
+        ocultarSecciones();
+        seccionCrearPelicula.setVisible(true);
+    }
+
+    @FXML
+    private void mostrarFiltrarPorAnio() {
+        ocultarSecciones();
+        seccionFiltrarPeliculas.setVisible(true);
+    }
+
+    @FXML
+    private void mostrarAsignarAlquiler() {
+        ocultarSecciones();
+        seccionAsignarAlquiler.setVisible(true);
+    }
+
+    private void ocultarSecciones() {
+        seccionCrearPelicula.setVisible(false);
+        seccionFiltrarPeliculas.setVisible(false);
+        seccionAsignarAlquiler.setVisible(false);
     }
 }

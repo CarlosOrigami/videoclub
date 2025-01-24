@@ -1,34 +1,27 @@
 package com.example.videoclub;
 
-import com.example.videoclub.utils.PantallaUtils;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
     @Override
-    public void start(Stage stage) {
-        try {
-            // Mostrar la pantalla de login al inicio
-            new PantallaUtils().showEstaPantalla(
-                    stage,
-                    "/com/example/videoclub/login.fxml", // Ruta del FXML para el login
-                    "Videoclub - Inicio de Sesión",
-                    400,  // Ancho de la ventana del login
-                    300   // Alto de la ventana del login
-            );
+    public void start(Stage primaryStage) throws Exception {
+        // Cargamos el archivo FXML de login
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/videoclub/login.fxml"));
+        Parent root = loader.load();
 
-            // Configurar tamaño mínimo de la ventana
-            stage.setMinWidth(400);
-            stage.setMinHeight(300);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Error al iniciar la aplicación: " + e.getMessage());
-        }
+        // Creamos la escena y la asignamos al escenario principal
+        Scene scene = new Scene(root, 900, 500);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Login - Videoclub");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
-

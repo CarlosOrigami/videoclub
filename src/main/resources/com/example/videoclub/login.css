@@ -1,0 +1,56 @@
+/* Estilos generales para la pantalla de login */
+.login-container {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 50;
+    -fx-alignment: CENTER_LEFT; /* Alineación hacia la izquierda */
+    -fx-spacing: 20;
+    -fx-background-image: url("back.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center top;
+}
+
+/* Estilo del título */
+.titulo-login {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black; /* Color del texto en negro */
+    -fx-margin-bottom: 20px;
+}
+
+
+/* Estilo para los campos de entrada */
+.input-field {
+    -fx-pref-width: 250px; /* Reducido el tamaño para que no ocupe todo el ancho */
+    -fx-pref-height: 40px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-focus-color: #4CAF50;
+        -fx-hgrow: NEVER;
+
+}
+
+.btn-login {
+    -fx-pref-width: 250px; /* Ancho preferido */
+    -fx-pref-height: 40px; /* Alto preferido */
+    -fx-font-size: 14px;
+    -fx-background-color: #6f4f1f; /* Marrón */
+    -fx-text-fill: black; /* Color del texto en negro */
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* Efecto hover para el botón de login */
+.btn-login:hover {
+    -fx-background-color: #5b3d1a; /* Marrón más oscuro al pasar el ratón */
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+    -fx-font-size: 12px;
+    -fx-text-fill: red;
+    -fx-padding-top: 10px;
+}

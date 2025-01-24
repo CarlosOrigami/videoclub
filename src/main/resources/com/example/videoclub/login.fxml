@@ -3,10 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" spacing="10" alignment="CENTER" fx:id="root" style="-fx-padding: 20;">
-    <Label text="Inicio de Sesión" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
-    <TextField fx:id="usuarioField" promptText="Usuario" style="-fx-pref-width: 200px;" />
-    <PasswordField fx:id="contrasenaField" promptText="Contraseña" style="-fx-pref-width: 200px;" />
-    <Button fx:id="iniciarSesionButton" text="Iniciar Sesión" style="-fx-pref-width: 200px;" />
-    <Label fx:id="mensajeError" text="" style="-fx-text-fill: red;" />
+<VBox alignment="TOP_LEFT" spacing="10" styleClass="login-container" stylesheets="@login.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.videoclub.controller.LoginControlador">
+
+    <Label styleClass="titulo-login" text="Iniciar Sesión" />
+    <TextField fx:id="usuarioField" promptText="Usuario" styleClass="input-field" prefWidth="250" maxWidth="250"/>
+    <PasswordField fx:id="contrasenaField" promptText="Contraseña" styleClass="input-field" prefWidth="250" maxWidth="250"/>
+    <Button fx:id="iniciarSesionButton" onAction="#manejarInicioSesion" styleClass="btn-login" text="Iniciar Sesión" />
+    <Label fx:id="mensajeError" styleClass="error-message" />
+
 </VBox>

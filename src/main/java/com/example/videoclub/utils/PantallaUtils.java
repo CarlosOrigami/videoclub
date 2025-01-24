@@ -24,6 +24,7 @@ public class PantallaUtils {
         stage.show();
         return fxmlLoader;
     }
+
     /**
      * Este método cierra la pantalla actual, a partir del stage actual.
      * El stage se obtiene del botón que se accionó en el momento.
@@ -31,7 +32,7 @@ public class PantallaUtils {
      *
      * @param botonDelAction el pasamos el botón que accionó
      */
-    public Stage cerrarEstaPantalla(Button botonDelAction){
+    public Stage cerrarEstaPantalla(Button botonDelAction) {
         //OBTENEMOS EL STAGE DE LA PANTALLA ACTUAL, A PARTIR DEL BOTÓN QUE SE ACCIONA
         Stage stageAhora = (Stage) botonDelAction.getScene().getWindow();
 

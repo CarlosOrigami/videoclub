@@ -1,10 +1,8 @@
 package com.example.videoclub.utils;
 
 public enum Constantes {
-    PAGINA_INICIAL("first.fxml"),
-    PAGINA_SEGUNDA_PANTALLA("second.fxml"),
-    TITULO_PAGINA_INICIAL("Página Inicial"),
-    TITULO_SEGUNDA_PANTALLA("Página Segunda");
+    PAGINA_ADMIN("/com/example/videoclub/admin.fxml"),
+    TITULO_PAGINA_INICIAL("Página Inicial");
 
     private final String descripcion;
 
