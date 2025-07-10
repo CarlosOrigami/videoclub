@@ -98,7 +98,7 @@ public class AdminControlador {
         // Escucha cambios en los filtros y aplica la función filtrarPeliculas()
         tituloFiltroField.textProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
         generoFiltroComboBox.valueProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
-        anioSpinner.valueProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
+        anioFiltroSpinner.valueProperty().addListener((observable, oldValue, newValue) -> filtrarPeliculas());
     }
 
     @FXML
